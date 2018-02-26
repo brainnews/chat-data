@@ -115,7 +115,7 @@ var GetGroupChatName = function(text) {
 	groupChatName = s.strRight(groupChatName, groupChatName.charAt(0));
 	groupChatName = s.strLeft(groupChatName, groupChatName.charAt(groupChatName.length - 1));
 	chatObj["title"] = groupChatName;
-	$('#group-chat-name').text(chatObj.title);
+	$('#group-chat-name').text('The Last Jedi group chat');
 }
 
 var GetMembers = function(text) {

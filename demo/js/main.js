@@ -9,7 +9,7 @@ var ShowLoadingStatus = function(str) {
 
 $(document).ready(function() {
 	ShowLoadingStatus('Loading group chat...');
-	$.get( "chat-02.txt", function( data ) {
+	$.get( "chat-01.txt", function( data ) {
 	  	console.log( "Load was performed." );
 	  	array = s.lines(data);
 	  	var chatString;

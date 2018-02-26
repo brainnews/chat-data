@@ -175,7 +175,7 @@ var GetMembers = function(text) {
 						'amount': 0,
 						'example': ''
 					};
-					var ignoreWords = ["me", "with", "'", "the", " ", "i", "!", "  ", "a", "to", "it", "is", "and", "?", "if", "you", "in", "that", "of", "they", "them", "she", "he", "on", "or", "for", "i'm", "are", "was", "so", "all", "my", "gonna", "this", "u", "but", "I'm"];
+					var ignoreWords = ["me", "with", "'", "the", " ", "i", "!", "  ", "a", "to", "it", "is", "and", "?", "if", "you", "in", "that", "of", "they", "them", "she", "he", "on", "or", "for", "i'm", "are", "was", "so", "all", "my", "gonna", "this", "u", "but", "I\'m"];
 					var wordCounts = {};
 					var words = this.word_vomit.split(" ");
 

@@ -1,0 +1,131 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Brochat</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,500,500i,700,700i" rel="stylesheet">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body class="no-scroll">
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div id="preloader" class="preloader-container">
+            <span class="pulse">
+                <h3>Analyzing conversation</h3>
+                <p class="small">It takes about 7.83 seconds</p>
+            </span>
+        </div>
+        <div class="wrapper">
+            <div class="header bg-lime">
+                <h2 id="group-chat-name" class="text-center"></h2>
+                <p id="group-chat-word-count" class="text-center small opacity-5"> </p>
+            </div>
+            <div class="leaderboard">
+                <ul id="memberList" class="list-unstyled member-list text-left">
+                    <li class="label" data-sort="member">Member</li>
+                </ul>
+                <ul id="messagesSentList" class="list-unstyled messages-sent-list text-right">
+                    <li class="label" data-sort="message count">Messages</li>
+                </ul>
+                <ul id="wordsSentList" class="list-unstyled words-sent-list text-right">
+                    <li class="label" data-sort="word count">Words</li>
+                </ul>
+                <ul id="wpmList" class="list-unstyled wpm-list text-right">
+                    <li class="label" data-sort="wpm">WPM</li>
+                </ul>
+            </div>
+            <div class="notable-quotables">
+                <div class="section-label">Notable Quotables<i class="fas fa-plus"></i></div>
+                <div class="content text-center border-lime hidden">
+                    <h3 id="quote"></h3>
+                    <p id="attribution" class="small mb-20"></p>
+                    <p class="small opacity-5">Tap to shuffle</p>
+                </div>
+            </div>
+            <div class="fave-words">
+                <div class="section-label">Favorite words <i class="fas fa-plus"></i></div>
+                <div class="content hidden">
+                    <ul id="fave-words-list" class="list-unstyled card-collection scroll-x pos-rel">
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="word-vomit">
+                <div class="section-label">Word Vomit <i class="fas fa-plus"></i></div>
+                <div class="content pb-20 hidden">
+                    <select id="word-vomit-select" class="styled-select">
+                        <option value="none" selected>Select a member</option>
+                    </select>
+                    <hr class="dark">
+                    <p id="word-vomit-text-container" class="columns">
+                        ...not actual vomit.
+                    </p>
+                </div>
+            </div>
+            <div class="longest-messages">
+                <div class="section-label">Longest Messages <i class="fas fa-plus"></i></div>
+                <div class="content hidden">
+                    <ul id="longest-messages-list" class="list-unstyled card-collection scroll-x pos-rel">
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="mini-games">
+                <div class="section-label">Mini-games <i class="fas fa-plus"></i></div>
+                <div class="content hidden">
+                    <ul id="mini-games-list" class="list-unstyled card-collection scroll-x pos-rel">
+                        <li class="card" data-game="who said it">
+                            <div class="card-header">
+                                <svg width="50" height="50">
+                                  <rect width="50" height="50" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+                                </svg>  
+                                <h4>Who said it?!?</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="small">See if you can guess who said what.</p>
+                            </div>
+                            <div class="card-footer">
+                                
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="popup-container hidden">
+                <div class="popup-window">
+                    <div class="popup-topbar">
+                        <button class="btn btn-small btn-close-popup"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="popup-header">
+                    </div>
+                    <div class="popup-body">
+                    </div>
+                    <div class="popup-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/linkify.min.js"></script>
+        <script src="js/linkify-jquery.min.js"></script>
+        <script src="js/underscore.string.min.js"></script>
+        <script src="js/moment.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/games.js"></script>
+        <script defer src="js/fontawesome-all.min.js"></script>
+    </body>
+</html>

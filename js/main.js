@@ -1,18 +1,6 @@
 var rawText = [];
-//var trimText = [];
-
 var chatObj = {};
-
-// function UploadChat(){
-//     var x = document.getElementById("chat-uploader");
-//     var reader = new FileReader();
-//     reader.onload = function() {
-//     	var dataURL = reader.result;
-//     }
-
-//     //reader.readAsDataURL(x.files[0]);
-//     console.log(reader.readAsDataURL(x.files[0]));
-// }
+var ignoreWords = ["me", "with", "'", "the", " ", "i", "!", "  ", "a", "to", "it", "is", "and", "?", "if", "you", "in", "that", "of", "they", "them", "she", "he", "on", "or", "for", "i'm", "are", "was", "so", "all", "my", "gonna", "this", "u", "but", "I\'m"];
 
 var UploadChat = function(event) {
 	$('#uploader').addClass('hidden');
@@ -61,6 +49,42 @@ function LoadChat(textFile) {
 
 		$('#longest-messages-list').append('<li class="card"><div class="card-header"><h4>' + chatObj.members[i].first_name() + '</h4></div><div class="card-body"><p>' + longestMessageObj[1] + '</p><p class="small example italic">' + longestMessageObj[0] + ' characters</p></div></li>');
 	}
+}
+
+function LoadDemoChat() {
+	$.get( "chat-03.txt", function( data ) {
+	  	console.log( "Load was performed." );
+	  	array = s.lines(data);
+	  	var chatString;
+		$.each( array, function(i, l) {
+			if (!s.include(l, "<Media omitted>")){
+				var trimmed = s.strRight(l, "- ");
+				rawText.push(l);
+	  			chatString = chatString + trimmed;
+			}
+		});
+
+		GetGroupChatName('with Star Wars group chat.txt');
+		GetMembers(rawText);
+		GetMessages(rawText);
+
+		SortLeaderboard('member');
+		ShowNotableQuotable();
+		ShowFavoriteWords();
+
+		$('html,body').removeClass('no-scroll');
+		$('#preloader').addClass('hidden');
+
+		for (var i = 0; i < Object.keys(chatObj.members).length; i++) {
+			//populate word vomit dropdown
+			$('#word-vomit-select').append('<option value="' + chatObj.members[i].name + '">' + chatObj.members[i].name + '</option>');
+
+			//populate longest message list
+			var longestMessageObj = chatObj.members[i].longest_message();
+
+			$('#longest-messages-list').append('<li class="card"><div class="card-header"><h4>' + chatObj.members[i].first_name() + '</h4></div><div class="card-body"><p>' + longestMessageObj[1] + '</p><p class="small example italic">' + longestMessageObj[0] + ' characters</p></div></li>');
+		}
+	});
 }
 
 var ShowFavoriteWords = function() {
@@ -186,7 +210,6 @@ var GetMembers = function(text) {
 						'amount': 0,
 						'example': ''
 					};
-					var ignoreWords = ["'", "the", " ", "i", "!", "  ", "a", "to", "it", "is", "and", "?", "if", "you", "in", "that", "of", "they", "them", "she", "he", "on", "or", "for", "i'm", "are", "was", "so", "all", "my", "gonna", "this", "u"];
 					var wordCounts = {};
 					var words = this.word_vomit.split(" ");
 

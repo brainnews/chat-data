@@ -16,6 +16,38 @@ html {
     line-height: 1.4;
 }
 
+*::-webkit-scrollbar {
+    width: 0px;
+}
+
+*::-webkit-scrollbar:horizontal {
+    width: 0px;
+}
+ 
+*::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+ 
+*::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+/**::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar:horizontal {
+    width: 8px;
+}
+ 
+*::-webkit-scrollbar-track {
+    background-color: rgba(0,0,0,0.5);
+}
+ 
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.8);
+}*/
+
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301
@@ -27,12 +59,12 @@ html {
  */
 
 ::-moz-selection {
-    background: #b3d4fc;
+    background: white;
     text-shadow: none;
 }
 
 ::selection {
-    background: #b3d4fc;
+    background: white;
     text-shadow: none;
 }
 
@@ -790,5 +822,18 @@ p.small {
     h2,
     h3 {
         page-break-after: avoid;
+    }
+}
+
+
+/* ==========================================================================
+   DESKTOP STYLES
+   ========================================================================== */
+
+
+@media (min-width: 768px) {
+    .wrapper {
+        max-width: 400px;
+        margin: 0 auto;
     }
 }

@@ -37,6 +37,8 @@ function LoadChat(textFile) {
 	ShowNotableQuotable();
 	ShowFavoriteWords();
 
+	BuildTimeline(rawText);
+
 	$('html,body').removeClass('no-scroll');
 	$('#preloader').addClass('hidden');
 
@@ -71,6 +73,8 @@ function LoadDemoChat() {
 		SortLeaderboard('member');
 		ShowNotableQuotable();
 		ShowFavoriteWords();
+
+		BuildTimeline(rawText);
 
 		$('html,body').removeClass('no-scroll');
 		$('#preloader').addClass('hidden');
@@ -253,7 +257,7 @@ var GetMessages = function(text) {
 		var memberNum = i;
 		var wordVomit = '';
 		$.each(text, function(i,l){
-			if (s.include(l, chatObj.members[memberNum].name)) {
+			if (s.include(l, chatObj.members[memberNum].name) && !s.include(l, ' created group ') && !s.include(l, ' added you')) {
 				var dateSent = s.strLeft(l, " - ");
 				var messageText = s.strRight(l, chatObj.members[memberNum].name + ": ");
 				chatObj.members[memberNum].messages.push("[" + dateSent + "] " + messageText);
@@ -273,6 +277,24 @@ var GetMessages = function(text) {
 			chatObj.members[memberNum].word_count = GetWordCount(chatObj.members[memberNum].word_vomit);
 		});
 	}
+}
+
+var BuildTimeline = function(text) {
+	chatObj["timeline"] = {};
+	var dateNumber = 0;
+	var dateList = [];
+
+	$.each( text, function(i, l) {
+		if (s.include(l, '/')){
+			dateList.push(s.strLeft(l, ', '));
+		}
+	});
+
+	console.log(dateList);
+
+	// for (var i = 0; i < memberNames.length; i++) {
+	// 	var detectedName = memberNames[i];
+	// }
 }
 
 var GetTotalCharacters = function(string) {

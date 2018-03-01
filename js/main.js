@@ -161,6 +161,48 @@ var GetGroupChatName = function(fileName) {
 	$('#group-chat-name').text(chatObj.title);
 }
 
+var BuildTimeline = function(text) {
+	var allDates = [];
+
+	$.each( text, function(i, l) {
+		if (s.startsWith(l, '/', 1) || s.startsWith(l, '/', 2)){
+			allDates.push(s.strLeft(l, ', '));
+		}
+	});
+
+	var dateList = [];
+	chatObj["timeline"] = {};
+	var dateNumber = 0;
+
+	for (var i = 3; i < allDates.length; i++) {
+		var detectedDate = allDates[i];
+		if (dateList.indexOf(detectedDate) < 0) {
+			dateList.push(allDates[i]);
+			chatObj.timeline[dateNumber] = {
+				'date': detectedDate,
+				'messages': []
+			}
+			dateNumber++;
+		}
+	}
+
+	for (var i = 0; i < Object.keys(chatObj.timeline).length; i++) {
+		var messageArray = [];
+		var dateNumber = i;
+		$.each(text, function(i, l) {
+			var dateString = chatObj.timeline[dateNumber].date;
+			if (s.include(l, dateString)) {
+				var timeSent = s.strLeft(l, ' - ');
+				timeSent = s.strRight(timeSent, ', ');
+				var messageString = s.strRight(l, ' - ');
+				messageArray.push('[' + timeSent + ']' + messageString);
+			}
+		});
+		chatObj.timeline[dateNumber].messages = messageArray;
+	}
+
+}
+
 var GetMembers = function(text) {
 	var members = [];
 	$.each( text, function(i, l) {
@@ -277,24 +319,6 @@ var GetMessages = function(text) {
 			chatObj.members[memberNum].word_count = GetWordCount(chatObj.members[memberNum].word_vomit);
 		});
 	}
-}
-
-var BuildTimeline = function(text) {
-	chatObj["timeline"] = {};
-	var dateNumber = 0;
-	var dateList = [];
-
-	$.each( text, function(i, l) {
-		if (s.include(l, '/')){
-			dateList.push(s.strLeft(l, ', '));
-		}
-	});
-
-	console.log(dateList);
-
-	// for (var i = 0; i < memberNames.length; i++) {
-	// 	var detectedName = memberNames[i];
-	// }
 }
 
 var GetTotalCharacters = function(string) {

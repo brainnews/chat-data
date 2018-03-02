@@ -148,6 +148,14 @@ a {
     border-bottom: 1px dashed;
 }
 
+.visualizer {
+    height: 500px;
+}
+
+.visualizer canvas {
+    background-color: #111;
+}
+
 .wrapper {
     padding: 20px;
     display: grid;
@@ -262,6 +270,10 @@ a {
 }
 
 .header {
+    grid-column: 1;
+}
+
+.visualizer {
     grid-column: 1;
 }
 

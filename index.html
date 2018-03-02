@@ -33,10 +33,13 @@
                 <p class="small">How to download a chat file:<br/><a href="https://faq.whatsapp.com/en/iphone/20888066#email">iOS</a> / <a href="https://faq.whatsapp.com/en/android/23756533/">Android</a></p>
             </div>
         </div>
-        <div class="wrapper">
+        <div id="wrapper" class="wrapper">
             <div class="header bg-lime">
                 <h2 id="group-chat-name" class="text-center"></h2>
                 <p id="group-chat-word-count" class="text-center small opacity-5"> </p>
+            </div>
+            <div class="visualizer">
+                <canvas id="visualizer"></canvas>
             </div>
             <div class="leaderboard">
                 <ul id="memberList" class="list-unstyled member-list text-left">
@@ -131,6 +134,7 @@
         <script src="js/underscore.string.min.js"></script>
         <script src="js/moment.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/canvas.js"></script>
         <script src="js/games.js"></script>
         <script defer src="js/fontawesome-all.min.js"></script>
     </body>
